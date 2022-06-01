@@ -25,5 +25,12 @@ struct Usuario: Decodable, Encodable
     var password: String 
 }
 
+/*struct Login: Decodable, Encodable
+{
+    var email: String
+    var password: String
+}*/
+
 var cascotas = [Mascota]()
 var usuarios = [Usuario]()
+//var sesion = [Login]()
