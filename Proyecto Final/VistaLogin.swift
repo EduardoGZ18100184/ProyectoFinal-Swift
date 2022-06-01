@@ -7,12 +7,12 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class VistaLogin: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        //wsCredencialesUsuario()
+        wsCredencialesUsuario()
     }
 
     
@@ -37,12 +37,18 @@ class ViewController: UIViewController {
         if blnCredencialesCorrectas {
             //cargar segunda vista
             print("Cargando segunda vista...")
+            
+            let vista = storyboard?.instantiateViewController(identifier: "vTabBar") as? VistaTabBar
+            //vista?.indice = indexPath.row
+            
+            navigationController?.pushViewController(vista!, animated: true)
+            
         }else{
             //mostrar alert de error
             print("Usuario/Contraseña incorrecta")
         }
-        //print("usuario: "+txtUsuario.text!)
-        //print("pass: "+txtContra.text!)
+        print("usuario: "+txtUsuario.text!)
+        print("pass: "+txtContra.text!)
     }
     
     func wsCredencialesUsuario(){

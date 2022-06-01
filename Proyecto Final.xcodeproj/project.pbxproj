@@ -14,6 +14,10 @@
 		83C088B62846D46A00A47F04 /* Proyecto_Final.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 83C088B42846D46A00A47F04 /* Proyecto_Final.xcdatamodeld */; };
 		83C088B82846D46B00A47F04 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 83C088B72846D46B00A47F04 /* Assets.xcassets */; };
 		83C088BB2846D46B00A47F04 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83C088B92846D46B00A47F04 /* LaunchScreen.storyboard */; };
+		83C088C32846D49D00A47F04 /* Datos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C088C22846D49D00A47F04 /* Datos.swift */; };
+		83C088C52846DC8700A47F04 /* Datos de prueba.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C088C42846DC8700A47F04 /* Datos de prueba.swift */; };
+		83C088C72847238F00A47F04 /* VistaLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C088C62847238F00A47F04 /* VistaLogin.swift */; };
+		83C088C9284725A300A47F04 /* VistaTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C088C8284725A300A47F04 /* VistaTabBar.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +30,10 @@
 		83C088B72846D46B00A47F04 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		83C088BA2846D46B00A47F04 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		83C088BC2846D46B00A47F04 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		83C088C22846D49D00A47F04 /* Datos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Datos.swift; sourceTree = "<group>"; };
+		83C088C42846DC8700A47F04 /* Datos de prueba.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Datos de prueba.swift"; sourceTree = "<group>"; };
+		83C088C62847238F00A47F04 /* VistaLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VistaLogin.swift; sourceTree = "<group>"; };
+		83C088C8284725A300A47F04 /* VistaTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VistaTabBar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -42,6 +50,8 @@
 		83C0889F2846D46A00A47F04 = {
 			isa = PBXGroup;
 			children = (
+				83C088C42846DC8700A47F04 /* Datos de prueba.swift */,
+				83C088C22846D49D00A47F04 /* Datos.swift */,
 				83C088AA2846D46A00A47F04 /* Proyecto Final */,
 				83C088A92846D46A00A47F04 /* Products */,
 			);
@@ -61,6 +71,8 @@
 				83C088AB2846D46A00A47F04 /* AppDelegate.swift */,
 				83C088AD2846D46A00A47F04 /* SceneDelegate.swift */,
 				83C088AF2846D46A00A47F04 /* ViewController.swift */,
+				83C088C62847238F00A47F04 /* VistaLogin.swift */,
+				83C088C8284725A300A47F04 /* VistaTabBar.swift */,
 				83C088B12846D46A00A47F04 /* Main.storyboard */,
 				83C088B72846D46B00A47F04 /* Assets.xcassets */,
 				83C088B92846D46B00A47F04 /* LaunchScreen.storyboard */,
@@ -141,10 +153,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				83C088C32846D49D00A47F04 /* Datos.swift in Sources */,
 				83C088B02846D46A00A47F04 /* ViewController.swift in Sources */,
 				83C088B62846D46A00A47F04 /* Proyecto_Final.xcdatamodeld in Sources */,
+				83C088C52846DC8700A47F04 /* Datos de prueba.swift in Sources */,
 				83C088AC2846D46A00A47F04 /* AppDelegate.swift in Sources */,
+				83C088C72847238F00A47F04 /* VistaLogin.swift in Sources */,
 				83C088AE2846D46A00A47F04 /* SceneDelegate.swift in Sources */,
+				83C088C9284725A300A47F04 /* VistaTabBar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
