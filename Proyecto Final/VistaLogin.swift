@@ -33,6 +33,7 @@ class VistaLogin: UIViewController {
                 print("Cargando segunda vista...")
                 
                 let vista = storyboard?.instantiateViewController(identifier: "vTabBar") as? VistaTabBar
+                playSound(sonido: "login")
                 //vista?.indice = indexPath.row
                 
                 navigationController?.pushViewController(vista!, animated: true)

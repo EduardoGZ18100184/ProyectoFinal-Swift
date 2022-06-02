@@ -25,7 +25,7 @@ class VistaAgendarCita: UIViewController, UIPickerViewDataSource, UIPickerViewDe
     @IBAction func btnAgendar(_ sender: Any) {
         //ValidarHorario()
         //EjecutarSonido()
-        playSound()
+        playSound(sonido: "correcto")
     }
     
     func ValidarHorario() -> Bool{

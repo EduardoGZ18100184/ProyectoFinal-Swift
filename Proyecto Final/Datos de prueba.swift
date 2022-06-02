@@ -69,48 +69,15 @@ extension UIImage {
     }
 }
 
-struct SoundModel{
-    var name: String
-    
-    func getURL() -> URL {
-        return URL(string: Bundle.main.path(forResource: name, ofType: "wav")!)!
-    }
-}
-
-var arrayOfSounds: [SoundModel] = [
-    .init(name: "correcto"),
-    .init(name: "login")
-]
-
-
-func EjecutarSonido(){
-    var player: AVAudioPlayer?
-    
-    /*ForEach(arrayOfSounds, id: \.self) {
-        sound in
-        
-    }*/
-    /*
-    arrayOfSounds[0].name = "login"
-    var URLSonido = arrayOfSounds[0].getURL()
-    player = try! AVAudioPlayer(contentsOf: URLSonido)*/
-    player?.prepareToPlay()
-    player?.play()
-}
-
 var player: AVAudioPlayer?
-func playSound() {
-    guard let url = Bundle.main.url(forResource: "login", withExtension: "wav") else { return }
+func playSound(sonido: String) {
+    guard let url = Bundle.main.url(forResource: sonido, withExtension: "wav") else { return }
 
     do {
         try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
         try AVAudioSession.sharedInstance().setActive(true)
 
-        /* The following line is required for the player to work on iOS 11. Change the file type accordingly*/
         player = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileType.mp3.rawValue)
-
-        /* iOS 10 and earlier require the following line:
-        player = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileTypeMPEGLayer3) */
 
         guard let player = player else { return }
 
