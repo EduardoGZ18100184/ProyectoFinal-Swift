@@ -207,42 +207,55 @@
         <!--Listado de mascotas-->
         <scene sceneID="ngv-uI-Qxq">
             <objects>
-                <tableViewController id="dPB-Z2-HaS" sceneMemberID="viewController">
+                <tableViewController id="dPB-Z2-HaS" customClass="VistaListadoMascotas" customModule="Proyecto_Final" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="UX8-Hk-LiU">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <label key="tableHeaderView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Listado mascotas" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="jL8-XR-Hmn">
+                        <toolbar key="tableHeaderView" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="759-5C-NB7">
                             <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <nil key="textColor"/>
-                            <nil key="highlightedColor"/>
-                        </label>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                            <items>
+                                <barButtonItem title="Item" image="arrow.up.arrow.down" catalog="system" id="gW2-uK-yXq"/>
+                                <barButtonItem style="plain" systemItem="flexibleSpace" id="r38-7e-6IP"/>
+                                <barButtonItem title="Listado de mascotas" id="7OO-2K-IWN"/>
+                                <barButtonItem style="plain" systemItem="flexibleSpace" id="8dX-W0-FHh"/>
+                                <barButtonItem title="Item" image="plus" catalog="system" id="ScY-Mw-gZI"/>
+                            </items>
+                        </toolbar>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="p1q-oX-kJQ" detailTextLabel="pag-a6-xEB" style="IBUITableViewCellStyleSubtitle" id="bBF-FF-yAQ">
-                                <rect key="frame" x="0.0" y="88.5" width="414" height="43.5"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="celdaNombre" rowHeight="111" id="bBF-FF-yAQ" customClass="celdaListado" customModule="Proyecto_Final" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="88.5" width="414" height="111"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="bBF-FF-yAQ" id="AXe-tk-HaQ">
-                                    <rect key="frame" x="0.0" y="0.0" width="385.5" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="111"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="p1q-oX-kJQ">
-                                            <rect key="frame" x="20" y="6" width="25" height="14.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Mascota" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P8c-kS-bnR">
+                                            <rect key="frame" x="24" y="19" width="83" height="31"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Detail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="pag-a6-xEB">
-                                            <rect key="frame" x="20" y="22.5" width="30.5" height="13.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JOu-cE-U4k">
+                                            <rect key="frame" x="242" y="3" width="127" height="103"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Tipo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="anf-wE-uJn">
+                                            <rect key="frame" x="24" y="58" width="34" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="imgFoto" destination="JOu-cE-U4k" id="s2k-cJ-3MY"/>
+                                    <outlet property="lblNombreMascota" destination="P8c-kS-bnR" id="13A-qh-UMb"/>
+                                    <outlet property="lblTipoMascota" destination="anf-wE-uJn" id="XzB-9J-4Pp"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -254,7 +267,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gzS-9F-MHA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1154" y="1039"/>
+            <point key="canvasLocation" x="1153.6231884057972" y="1038.6160714285713"/>
         </scene>
         <!--Inicio-->
         <scene sceneID="RDq-zk-ys9">
@@ -341,6 +354,7 @@
     <resources>
         <image name="Farmacia" width="1344" height="251"/>
         <image name="Promociones" width="1260" height="200"/>
+        <image name="arrow.up.arrow.down" catalog="system" width="128" height="98"/>
         <image name="aves" width="796" height="250"/>
         <image name="calendar" catalog="system" width="128" height="106"/>
         <image name="camera.metering.unknown" catalog="system" width="128" height="93"/>
@@ -350,6 +364,7 @@
         <image name="peces" width="796" height="250"/>
         <image name="pequeñas mascotas" width="796" height="250"/>
         <image name="perro" width="796" height="250"/>
+        <image name="plus" catalog="system" width="128" height="113"/>
         <image name="ropa" width="620" height="295"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

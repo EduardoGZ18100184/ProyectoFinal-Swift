@@ -35,6 +35,7 @@ class Mascota: Decodable, Encodable
     var id_tipo: Int
     var raza: String
     var id_dueno: Int
+    var foto: String
     
     init(id: Int, nom: String, tipo: Int, raz: String, idD: Int){
         id_mascota = id
@@ -42,6 +43,7 @@ class Mascota: Decodable, Encodable
         id_tipo = tipo
         raza = raz
         id_dueno = idD
+        foto = ""
     }
 }
 

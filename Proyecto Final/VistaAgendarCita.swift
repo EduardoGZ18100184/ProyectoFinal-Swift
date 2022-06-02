@@ -48,6 +48,7 @@ class VistaAgendarCita: UIViewController, UIPickerViewDataSource, UIPickerViewDe
         txtTipoMascota.text = String(mascotas[row].id_tipo)
         txtRazaMascota.text = String(mascotas[row].raza)
         
+        imgImagenMascota.image = UIImage(mascotas[row].foto)
         /*strFigura = nomFiguras[row]
         lblDatosFig.text = "Datos de la figura : \(strFigura)"
         lblResultado.text = "Resultados:"
