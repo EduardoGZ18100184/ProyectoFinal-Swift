@@ -28,6 +28,7 @@ class VistaAgendarCita: UIViewController, UIPickerViewDataSource, UIPickerViewDe
         }else{
             pickerView(pkvMascotas, didSelectRow: 0, inComponent: 1)//selecciona el primero en el pkv
             EstablecerFechas()
+            btnAgendar.isEnabled = true
         }
         
     }

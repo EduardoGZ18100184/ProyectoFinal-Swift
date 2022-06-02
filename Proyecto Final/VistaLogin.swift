@@ -13,6 +13,7 @@ class VistaLogin: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         wsCredencialesUsuario()
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "fondo2")!)
     }
 
     

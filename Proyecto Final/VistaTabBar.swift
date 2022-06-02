@@ -14,6 +14,7 @@ class VistaTabBar: UITabBarController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         //wsCredencialesUsuario()
+        self.navigationItem.hidesBackButton = true
     }
     
 }
