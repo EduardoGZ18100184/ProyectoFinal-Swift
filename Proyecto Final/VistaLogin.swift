@@ -6,13 +6,13 @@
 //
 
 import UIKit
-
+var blnResultado = false
 class VistaLogin: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        //wsCredencialesUsuario()
+        wsCredencialesUsuario()
     }
 
     
@@ -22,31 +22,23 @@ class VistaLogin: UIViewController {
     @IBAction func btnIniciarSesion(_ sender: Any) {
         let usuario = txtUsuario.text
         let contra = txtContra.text
-        //var blnCredencialesCorrectas = false
-        
-        //wsCredencialesUsuario()
+        var blnBandera = false
         wsLogin(usuario!)
+        
         for valor in usuarios {
             if (usuario == valor.email && contra == valor.password){
-                //blnCredencialesCorrectas = true
-                //break
+                blnBandera = true
                 print("Cargando segunda vista...")
-                
-                let vista = storyboard?.instantiateViewController(identifier: "vTabBar") as? VistaTabBar
-                playSound(sonido: "login")
-                //vista?.indice = indexPath.row
-                
-                navigationController?.pushViewController(vista!, animated: true)
-            }else{
-                print("Usuario/Contraseña incorrecta")
+                break
             }
         }
         
-        /*if blnCredencialesCorrectas {
+        if  blnBandera {
             //cargar segunda vista
             print("Cargando segunda vista...")
             
             let vista = storyboard?.instantiateViewController(identifier: "vTabBar") as? VistaTabBar
+            playSound(sonido: "login")
             //vista?.indice = indexPath.row
             
             navigationController?.pushViewController(vista!, animated: true)
@@ -54,14 +46,13 @@ class VistaLogin: UIViewController {
         }else{
             //mostrar alert de error
             print("Usuario/Contraseña incorrecta")
+            blnResultado = false
         }
-        print("usuario: "+txtUsuario.text!)
-        print("pass: "+txtContra.text!)*/
     }
     
-    func wsCredencialesUsuario(){
+    func wsCredencialesUsuario()
+    {
         let liga = "https://vetappios.herokuapp.com/usuario?fbclid=IwAR1OfsV5xQ6kau48cnsf1sbt_gwKjsBi3HSqqncZBy9LoalhVxLh_Cmlwnc"
-        
         guard let url = URL(string: liga) else { return }
         
         var peticion = URLRequest(url: url)
@@ -80,16 +71,14 @@ class VistaLogin: UIViewController {
                 {
                     print(jsonError)
                 }
-                //self.tableView.reloadData()
-                //self.tableView.refreshControl?.endRefreshing()
                 print (usuarios)
             }
         }.resume()
     }
     
-    func wsLogin(_ usuario: String){
+    func wsLogin(_ usuario: String) {
         let liga = "https://vetappios.herokuapp.com/usuario/query?email="+"\(usuario)"
-        
+        //var blnResultado = false
         guard let url = URL(string: liga) else { return }
         
         var peticion = URLRequest(url: url)
@@ -97,7 +86,7 @@ class VistaLogin: UIViewController {
         
         URLSession.shared.dataTask(with: peticion)
         {(data, response, error) in
-            DispatchQueue.main.async
+            DispatchQueue.main.sync
             {
                 guard let datos = data else { return }
                 do
