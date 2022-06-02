@@ -21,6 +21,8 @@
 		83F21FD7284869780018E5EA /* VistaAgendarCita.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F21FD6284869780018E5EA /* VistaAgendarCita.swift */; };
 		83F21FD92848884D0018E5EA /* VistaListadoMascotas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F21FD82848884D0018E5EA /* VistaListadoMascotas.swift */; };
 		83F21FDB28488AF30018E5EA /* celdaListado.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F21FDA28488AF30018E5EA /* celdaListado.swift */; };
+		83F21FE4284910060018E5EA /* correcto.wav in Resources */ = {isa = PBXBuildFile; fileRef = 83F21FE2284910060018E5EA /* correcto.wav */; };
+		83F21FE5284910060018E5EA /* login.wav in Resources */ = {isa = PBXBuildFile; fileRef = 83F21FE3284910060018E5EA /* login.wav */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +42,8 @@
 		83F21FD6284869780018E5EA /* VistaAgendarCita.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VistaAgendarCita.swift; sourceTree = "<group>"; };
 		83F21FD82848884D0018E5EA /* VistaListadoMascotas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VistaListadoMascotas.swift; sourceTree = "<group>"; };
 		83F21FDA28488AF30018E5EA /* celdaListado.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = celdaListado.swift; sourceTree = "<group>"; };
+		83F21FE2284910060018E5EA /* correcto.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = correcto.wav; sourceTree = "<group>"; };
+		83F21FE3284910060018E5EA /* login.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = login.wav; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,8 +91,18 @@
 				83C088B42846D46A00A47F04 /* Proyecto_Final.xcdatamodeld */,
 				83C088C42846DC8700A47F04 /* Datos de prueba.swift */,
 				83C088C22846D49D00A47F04 /* Datos.swift */,
+				83F21FE1284910060018E5EA /* sonidos */,
 			);
 			path = "Proyecto Final";
+			sourceTree = "<group>";
+		};
+		83F21FE1284910060018E5EA /* sonidos */ = {
+			isa = PBXGroup;
+			children = (
+				83F21FE2284910060018E5EA /* correcto.wav */,
+				83F21FE3284910060018E5EA /* login.wav */,
+			);
+			path = sonidos;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -150,6 +164,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				83C088BB2846D46B00A47F04 /* LaunchScreen.storyboard in Resources */,
+				83F21FE4284910060018E5EA /* correcto.wav in Resources */,
+				83F21FE5284910060018E5EA /* login.wav in Resources */,
 				83C088B82846D46B00A47F04 /* Assets.xcassets in Resources */,
 				83C088B32846D46A00A47F04 /* Main.storyboard in Resources */,
 			);

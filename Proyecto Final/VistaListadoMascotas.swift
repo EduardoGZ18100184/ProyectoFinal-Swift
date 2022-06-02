@@ -15,7 +15,18 @@ class VistaListadoMascotas: UITableViewController {
         pruebaPkv()
         tableView.reloadData()
     }
+    //Botones de agregar y ordenar
     
+    @IBAction func moverElemento(_ sender: Any) {
+        
+    }
+    
+    
+    @IBAction func agregarElemento(_ sender: Any) {
+        
+    }
+    
+    //Renglones del listado
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }

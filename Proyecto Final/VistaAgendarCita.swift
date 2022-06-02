@@ -21,6 +21,29 @@ class VistaAgendarCita: UIViewController, UIPickerViewDataSource, UIPickerViewDe
         
     }
     
+    // Acciones que realiza si se da en el boton agendar
+    @IBAction func btnAgendar(_ sender: Any) {
+        //ValidarHorario()
+        //EjecutarSonido()
+        playSound()
+    }
+    
+    func ValidarHorario() -> Bool{
+        let horario = dateTF.text
+        
+        //var formateador = DateFormatter()
+        //formateador.dateFormat = "yyyy-MM-dd HH:mm"
+        //var horarioDate = formateador.date(from: horario!)
+        
+        var horarioDate = formatDate(cadena: horario!)
+        
+        
+        //print(horarioDate.day)
+        
+        return true
+    }
+    
+    
     /// Funciones para el pickerview de las mascotas del usuario
     
     @IBOutlet weak var pkvMascotas: UIPickerView!
@@ -55,11 +78,13 @@ class VistaAgendarCita: UIViewController, UIPickerViewDataSource, UIPickerViewDe
         datePicker.addTarget(self, action: #selector(dateChange(datePicker:)), for: UIControl.Event.valueChanged)
         datePicker.frame.size = CGSize(width: 0, height: 300)
         datePicker.preferredDatePickerStyle = .wheels
-        datePicker.minimumDate = Date()
+        let fecha_actual = Calendar.current
+        let fecha_minima = fecha_actual.date(byAdding: .day, value: 1, to: Date())
+        datePicker.minimumDate = fecha_minima
         datePicker.minuteInterval = 30
         
-        let calendar = Calendar.current
-        let date = calendar.date(byAdding: .year, value: 1, to: Date())
+        //let calendar = Calendar.current
+        let date = fecha_actual.date(byAdding: .year, value: 1, to: Date())
         datePicker.maximumDate = date //Muestra hasta un anio mas
                 
         dateTF.inputView = datePicker
@@ -73,11 +98,20 @@ class VistaAgendarCita: UIViewController, UIPickerViewDataSource, UIPickerViewDe
         dateTF.text = formatDate(date: datePicker.date)
     }
     
+    //convierte de date a string
     func formatDate(date: Date) -> String
     {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd HH:mm"
         return formatter.string(from: date)
+    }
+    
+    //convierte de string a date
+    func formatDate(cadena: String) -> Date
+    {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd HH:mm"
+        return formatter.date(from: cadena)!
     }
     
 }
