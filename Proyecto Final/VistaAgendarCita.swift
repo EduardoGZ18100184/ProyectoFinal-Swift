@@ -16,8 +16,7 @@ class VistaAgendarCita: UIViewController, UIPickerViewDataSource, UIPickerViewDe
         pkvMascotas.delegate = self
         pkvMascotas.dataSource = self
         
-        pickerView(pkvMascotas, didSelectRow: 0, inComponent: 1)
-        //pickerView(pkvMascotas, titleForRow: 0, forComponent: 1) //selecciona el primero en el pkv
+        pickerView(pkvMascotas, didSelectRow: 0, inComponent: 1)//selecciona el primero en el pkv
         EstablecerFechas()
         
     }
@@ -34,11 +33,9 @@ class VistaAgendarCita: UIViewController, UIPickerViewDataSource, UIPickerViewDe
         1
     }
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        //return mascotasPrueba.count
         return mascotas.count
     }
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        //return mascotasPrueba[row]
         return mascotas[row].nombre
     }
     
@@ -47,12 +44,7 @@ class VistaAgendarCita: UIViewController, UIPickerViewDataSource, UIPickerViewDe
         txtNombreMascota.text = mascotas[row].nombre
         txtTipoMascota.text = String(mascotas[row].id_tipo)
         txtRazaMascota.text = String(mascotas[row].raza)
-        
         imgImagenMascota.image = UIImage(mascotas[row].foto)
-        /*strFigura = nomFiguras[row]
-        lblDatosFig.text = "Datos de la figura : \(strFigura)"
-        lblResultado.text = "Resultados:"
-        imgFiguras.image = UIImage(named: strFigura)*/
     }
     
     /// Funciones para la fecha de la cita
@@ -71,7 +63,7 @@ class VistaAgendarCita: UIViewController, UIPickerViewDataSource, UIPickerViewDe
         datePicker.maximumDate = date //Muestra hasta un anio mas
                 
         dateTF.inputView = datePicker
-        dateTF.text = formatDate(date: Date()) // todays Date
+        dateTF.text = formatDate(date: Date())
     }
     
     @IBOutlet weak var dateTF: UITextField!

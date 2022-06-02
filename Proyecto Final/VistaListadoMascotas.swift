@@ -25,37 +25,16 @@ class VistaListadoMascotas: UITableViewController {
         return mascotas.count
     }
     
+    //altura de cada renglon
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 111
     }
-    //
-    
-   /* override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let celda = tableView.dequeueReusableCell(withIdentifier: "celdaNombre", for: indexPath) as! celdaListado
-        
-        /*celda.lblNombre.text = lenguajes[indexPath.row].nombre
-        celda.lblOrientacion.text = lenguajes[indexPath.row].orientacion
-        celda.imgLogo.image = lenguajes[indexPath.row].logo*/
-        
-        celda.lblNombreMascota.text = mascotas[indexPath.row].nombre
-        //celda.lblTipoMascota.text = String(mascotas[indexPath.row].id_tipo)
-        
-        //debo obtener la nueva propiedad con el ur de la imagen
-        //convertila a imagen en un objeto y asignarla
-        //celda.imgFoto.image =
-        
-
-        return celda
-    }*/
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let celda = tableView.dequeueReusableCell(withIdentifier: "celdaNombre", for: indexPath) as! celdaListado
         
         celda.lblNombreMascota.text = mascotas[indexPath.row].nombre
         celda.lblTipoMascota.text = String(mascotas[indexPath.row].id_tipo)
-        
-        //debo obtener la nueva propiedad con el ur de la imagen
-        //convertila a imagen en un objeto y asignarla
         celda.imgFoto.image = UIImage(mascotas[indexPath.row].foto)
         
         return celda
