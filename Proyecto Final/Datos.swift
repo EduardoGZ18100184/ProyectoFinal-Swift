@@ -7,6 +7,7 @@
 
 import Foundation
 
+/*
 struct Mascota: Decodable, Encodable
 {
 
@@ -16,6 +17,7 @@ struct Mascota: Decodable, Encodable
     var raza: String
     var id_dueno: Int
 }
+ */
 
 struct Usuario: Decodable, Encodable
 {
@@ -25,12 +27,24 @@ struct Usuario: Decodable, Encodable
     var password: String 
 }
 
-/*struct Login: Decodable, Encodable
+class Mascota: Decodable, Encodable
 {
-    var email: String
-    var password: String
-}*/
 
-var cascotas = [Mascota]()
+    var id_mascota: Int
+    var nombre: String
+    var id_tipo: Int
+    var raza: String
+    var id_dueno: Int
+    
+    init(id: Int, nom: String, tipo: Int, raz: String, idD: Int){
+        id_mascota = id
+        nombre = nom
+        id_tipo = tipo
+        raza = raz
+        id_dueno = idD
+    }
+}
+
+var mascotas = [Mascota]()
 var usuarios = [Usuario]()
-//var sesion = [Login]()
+

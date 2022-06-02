@@ -193,7 +193,11 @@
                     <tabBarItem key="tabBarItem" title="Citas" image="calendar" catalog="system" selectedImage="calendar" id="Ndw-OP-EC3"/>
                     <connections>
                         <outlet property="dateTF" destination="jVf-HB-3IS" id="REq-cR-MAW"/>
+                        <outlet property="imgImagenMascota" destination="pn1-Wd-5qa" id="qSY-As-3FO"/>
                         <outlet property="pkvMascotas" destination="EsM-jU-AZl" id="ESE-q9-Mno"/>
+                        <outlet property="txtNombreMascota" destination="ryl-0m-xuG" id="m48-dv-Gkp"/>
+                        <outlet property="txtRazaMascota" destination="Y8S-Yl-ZNj" id="ZLN-H3-evQ"/>
+                        <outlet property="txtTipoMascota" destination="pVu-Dd-Fqg" id="0b3-Ee-fDi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DGu-Wh-ldO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

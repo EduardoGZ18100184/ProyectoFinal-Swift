@@ -52,8 +52,6 @@
 		83C0889F2846D46A00A47F04 = {
 			isa = PBXGroup;
 			children = (
-				83C088C42846DC8700A47F04 /* Datos de prueba.swift */,
-				83C088C22846D49D00A47F04 /* Datos.swift */,
 				83C088AA2846D46A00A47F04 /* Proyecto Final */,
 				83C088A92846D46A00A47F04 /* Products */,
 			);
@@ -81,6 +79,8 @@
 				83C088B92846D46B00A47F04 /* LaunchScreen.storyboard */,
 				83C088BC2846D46B00A47F04 /* Info.plist */,
 				83C088B42846D46A00A47F04 /* Proyecto_Final.xcdatamodeld */,
+				83C088C42846DC8700A47F04 /* Datos de prueba.swift */,
+				83C088C22846D49D00A47F04 /* Datos.swift */,
 			);
 			path = "Proyecto Final";
 			sourceTree = "<group>";

@@ -12,26 +12,46 @@ class VistaAgendarCita: UIViewController, UIPickerViewDataSource, UIPickerViewDe
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        pruebaPkv()
         pkvMascotas.delegate = self
         pkvMascotas.dataSource = self
         
+        pickerView(pkvMascotas, didSelectRow: 0, inComponent: 1)
+        //pickerView(pkvMascotas, titleForRow: 0, forComponent: 1) //selecciona el primero en el pkv
         EstablecerFechas()
         
     }
     
     /// Funciones para el pickerview de las mascotas del usuario
-    @IBOutlet weak var pkvMascotas: UIPickerView!
     
-    let mascotasPrueba = ["Luna","Masha", "Lulu", "Manchas", "Firulais" ]
+    @IBOutlet weak var pkvMascotas: UIPickerView!
+    @IBOutlet weak var txtNombreMascota: UITextField!
+    @IBOutlet weak var txtTipoMascota: UITextField!
+    @IBOutlet weak var txtRazaMascota: UITextField!
+    @IBOutlet weak var imgImagenMascota: UIImageView!
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         1
     }
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return mascotasPrueba.count
+        //return mascotasPrueba.count
+        return mascotas.count
     }
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return mascotasPrueba[row]
+        //return mascotasPrueba[row]
+        return mascotas[row].nombre
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        
+        txtNombreMascota.text = mascotas[row].nombre
+        txtTipoMascota.text = String(mascotas[row].id_tipo)
+        txtRazaMascota.text = String(mascotas[row].raza)
+        
+        /*strFigura = nomFiguras[row]
+        lblDatosFig.text = "Datos de la figura : \(strFigura)"
+        lblResultado.text = "Resultados:"
+        imgFiguras.image = UIImage(named: strFigura)*/
     }
     
     /// Funciones para la fecha de la cita
