@@ -18,6 +18,7 @@
 		83C088C52846DC8700A47F04 /* Datos de prueba.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C088C42846DC8700A47F04 /* Datos de prueba.swift */; };
 		83C088C72847238F00A47F04 /* VistaLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C088C62847238F00A47F04 /* VistaLogin.swift */; };
 		83C088C9284725A300A47F04 /* VistaTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C088C8284725A300A47F04 /* VistaTabBar.swift */; };
+		83F21FD7284869780018E5EA /* VistaAgendarCita.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F21FD6284869780018E5EA /* VistaAgendarCita.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		83C088C42846DC8700A47F04 /* Datos de prueba.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Datos de prueba.swift"; sourceTree = "<group>"; };
 		83C088C62847238F00A47F04 /* VistaLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VistaLogin.swift; sourceTree = "<group>"; };
 		83C088C8284725A300A47F04 /* VistaTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VistaTabBar.swift; sourceTree = "<group>"; };
+		83F21FD6284869780018E5EA /* VistaAgendarCita.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VistaAgendarCita.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +75,7 @@
 				83C088AF2846D46A00A47F04 /* ViewController.swift */,
 				83C088C62847238F00A47F04 /* VistaLogin.swift */,
 				83C088C8284725A300A47F04 /* VistaTabBar.swift */,
+				83F21FD6284869780018E5EA /* VistaAgendarCita.swift */,
 				83C088B12846D46A00A47F04 /* Main.storyboard */,
 				83C088B72846D46B00A47F04 /* Assets.xcassets */,
 				83C088B92846D46B00A47F04 /* LaunchScreen.storyboard */,
@@ -155,6 +158,7 @@
 			files = (
 				83C088C32846D49D00A47F04 /* Datos.swift in Sources */,
 				83C088B02846D46A00A47F04 /* ViewController.swift in Sources */,
+				83F21FD7284869780018E5EA /* VistaAgendarCita.swift in Sources */,
 				83C088B62846D46A00A47F04 /* Proyecto_Final.xcdatamodeld in Sources */,
 				83C088C52846DC8700A47F04 /* Datos de prueba.swift in Sources */,
 				83C088AC2846D46A00A47F04 /* AppDelegate.swift in Sources */,
