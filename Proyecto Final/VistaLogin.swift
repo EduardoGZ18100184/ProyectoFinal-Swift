@@ -28,7 +28,6 @@ class VistaLogin: UIViewController {
         for valor in usuarios {
             if (usuario == valor.email && contra == valor.password){
                 blnBandera = true
-                print("Cargando segunda vista...")
                 break
             }
         }
@@ -46,6 +45,12 @@ class VistaLogin: UIViewController {
         }else{
             //mostrar alert de error
             print("Usuario/Contraseña incorrecta")
+            let alerta = UIAlertController(title: "Error", message: "Usuario/Contraseña incorrecto", preferredStyle: .alert)
+            let btnCancelar = UIAlertAction(title: "Cancelar", style: .cancel){_ in
+                print("error")
+            }
+            alerta.addAction(btnCancelar)
+            self.present(alerta, animated: true, completion: nil)
             blnResultado = false
         }
     }

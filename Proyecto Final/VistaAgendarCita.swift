@@ -9,6 +9,7 @@ import UIKit
 
 class VistaAgendarCita: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
     
+    @IBOutlet weak var btnAgendar: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -16,19 +17,29 @@ class VistaAgendarCita: UIViewController, UIPickerViewDataSource, UIPickerViewDe
         pkvMascotas.delegate = self
         pkvMascotas.dataSource = self
         
-        pickerView(pkvMascotas, didSelectRow: 0, inComponent: 1)//selecciona el primero en el pkv
-        EstablecerFechas()
+        if mascotas.count == 0 {
+            let alerta = UIAlertController(title: "Error", message: "No tiene mascotas registradas", preferredStyle: .alert)
+            let btnCancelar = UIAlertAction(title: "Cancelar", style: .cancel){_ in
+                print("error")
+            }
+            alerta.addAction(btnCancelar)
+            self.present(alerta, animated: true, completion: nil)
+            btnAgendar.isEnabled = false
+        }else{
+            pickerView(pkvMascotas, didSelectRow: 0, inComponent: 1)//selecciona el primero en el pkv
+            EstablecerFechas()
+        }
         
     }
     
     // Acciones que realiza si se da en el boton agendar
     @IBAction func btnAgendar(_ sender: Any) {
-        //ValidarHorario()
+        ValidarHorario()
         //EjecutarSonido()
         playSound(sonido: "correcto")
     }
     
-    func ValidarHorario() -> Bool{
+    func ValidarHorario(){
         let horario = dateTF.text
         
         //var formateador = DateFormatter()
@@ -37,10 +48,7 @@ class VistaAgendarCita: UIViewController, UIPickerViewDataSource, UIPickerViewDe
         
         var horarioDate = formatDate(cadena: horario!)
         
-        
-        //print(horarioDate.day)
-        
-        return true
+        print(horarioDate)
     }
     
     
@@ -64,7 +72,7 @@ class VistaAgendarCita: UIViewController, UIPickerViewDataSource, UIPickerViewDe
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         
-        txtNombreMascota.text = mascotas[row].nombre
+        //txtNombreMascota.text = mascotas[row].nombre
         txtTipoMascota.text = String(mascotas[row].id_tipo)
         txtRazaMascota.text = String(mascotas[row].raza)
         imgImagenMascota.image = UIImage(mascotas[row].foto)
