@@ -9,11 +9,20 @@ import UIKit
 
 class VistaAgendarCita: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view.
+        pkvMascotas.delegate = self
+        pkvMascotas.dataSource = self
+        
+        EstablecerFechas()
+        
+    }
+    
+    /// Funciones para el pickerview de las mascotas del usuario
     @IBOutlet weak var pkvMascotas: UIPickerView!
     
-    
-    let mascotasPrueba = ["Luna","Masha", "Lulu",
-             "Manchas", "Firulais" ]
+    let mascotasPrueba = ["Luna","Masha", "Lulu", "Manchas", "Firulais" ]
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         1
@@ -25,12 +34,9 @@ class VistaAgendarCita: UIViewController, UIPickerViewDataSource, UIPickerViewDe
         return mascotasPrueba[row]
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        pkvMascotas.delegate = self
-        pkvMascotas.dataSource = self
-        
+    /// Funciones para la fecha de la cita
+    
+    func EstablecerFechas(){
         let datePicker = UIDatePicker()
         datePicker.datePickerMode = .dateAndTime
         datePicker.addTarget(self, action: #selector(dateChange(datePicker:)), for: UIControl.Event.valueChanged)
@@ -47,21 +53,12 @@ class VistaAgendarCita: UIViewController, UIPickerViewDataSource, UIPickerViewDe
         dateTF.text = formatDate(date: Date()) // todays Date
     }
     
-    
-    /// Funciones para la fecha de la cita ///
     @IBOutlet weak var dateTF: UITextField!
     
     @objc func dateChange(datePicker: UIDatePicker)
     {
         dateTF.text = formatDate(date: datePicker.date)
     }
-        
-    /*func formatDate(date: Date) -> String
-        {
-            let formatter = DateFormatter()
-            formatter.dateFormat = "MMMM dd yyyy"
-            return formatter.string(from: date)
-    }*/
     
     func formatDate(date: Date) -> String
     {
@@ -69,7 +66,5 @@ class VistaAgendarCita: UIViewController, UIPickerViewDataSource, UIPickerViewDe
         formatter.dateFormat = "yyyy-MM-dd HH:mm"
         return formatter.string(from: date)
     }
-    
-    
     
 }
