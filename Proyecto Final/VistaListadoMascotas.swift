@@ -50,7 +50,38 @@ class VistaListadoMascotas: UITableViewController {
         }.resume()
         
         self.tableView.reloadData()
-        self.tableView.refreshControl?.endRefreshing()    }
+        self.tableView.refreshControl?.endRefreshing()
+    }
+    
+    ///
+    ///
+    ///
+    //Renglones del listado
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    //cantidad de renglones que tendra el tableView
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return mascotas2.count
+    }
+    
+    //altura de cada renglon
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 111
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let celda = tableView.dequeueReusableCell(withIdentifier: "celdaNombre", for: indexPath) as! celdaListado
+        
+        celda.lblNombreMascota.text = mascotas2[indexPath.row].nombre
+        //celda.lblTipoMascota.text = String(mascotas2[indexPath.row].idTipo)
+        celda.lblTipoMascota.text = buscarTipo(id: mascotas2[indexPath.row].idTipo)
+        //celda.imgFoto.image = UIImage(mascotas[indexPath.row].foto)
+        
+        return celda
+    }
+    
     //Botones de agregar y ordenar
     
     @IBAction func moverElemento(_ sender: Any) {
@@ -96,7 +127,7 @@ class VistaListadoMascotas: UITableViewController {
             }
             //var id = UsuarioCurrent.idUsuario
             let id = 1
-            //self.wsInsertarMascota(nombre, tipo, raza, id)
+            self.wsInsertarMascota(nombre, tipo, raza, id)
             
             let alerta = UIAlertController(title: "Agregar mascota", message: "Mascota agregada correctamente", preferredStyle: .alert)
             let btnCancelar = UIAlertAction(title: "Ok", style: .default){_ in
@@ -105,13 +136,50 @@ class VistaListadoMascotas: UITableViewController {
             self.present(alerta, animated: true, completion: nil)
             playSound(sonido: "correcto")
         }
+    
         
         alerta.addAction(btnCancelar)
         alerta.addAction(btnIngresar)
         
         self.present(alerta, animated: true, completion: nil)
+    //fin de agregar elemento
     }
     
+    //wsInsertarMascota v2
+    func wsInsertarMascota(_ nombre: String, _ tipo: Int, _ raza: String, _ duenio: Int)
+    {
+        let liga = "https://vetappios.herokuapp.com/mascota/"
+        //let parametros = "nombre=\(nombre)&idTipo=\(tipo)&raza=\(raza)&idDueno=\(duenio)"
+        let parametros = [
+            "nombre": nombre,
+            "idTipo": tipo,
+            "raza": raza,
+            "idDueno": duenio
+        ] as [String : Any]
+        
+        guard let url = URL(string: liga) else { return }
+        var peticion = URLRequest(url: url)
+        
+        let reqMascota = RequestMascota(nombre: nombre, idTipo: tipo, raza: raza, idDueno: duenio)
+        peticion.httpMethod = "POST"
+        
+        peticion.setValue("Application/json", forHTTPHeaderField: "Content-Type")
+        peticion.httpBody = try? JSONSerialization.data(withJSONObject: parametros, options: [])
+        
+        let session = URLSession.shared.dataTask(with: peticion){
+            data, response, error in
+            if let error = error {
+                print("El error es: \(error.localizedDescription)")
+            }else{
+                let jsonRes = try? JSONSerialization.jsonObject(with: data!, options: [])
+                print("Respuesta json es \(jsonRes)")
+            }
+        }.resume()
+    }
+
+    
+    //wsInsertarMascota v1
+    /*
     func wsInsertarMascota(_ nombre: String, _ tipo: Int, _ raza: String, _ duenio: Int)
     {
         let liga = "https://vetappios.herokuapp.com/mascota/"
@@ -149,31 +217,9 @@ class VistaListadoMascotas: UITableViewController {
             }
         }
         task.resume()
-    }
+    }*/
     
-    //Renglones del listado
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    
-    //cantidad de renglones que tendra el tableView
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return mascotas2.count
-    }
-    
-    //altura de cada renglon
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 111
-    }
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let celda = tableView.dequeueReusableCell(withIdentifier: "celdaNombre", for: indexPath) as! celdaListado
-        
-        celda.lblNombreMascota.text = mascotas2[indexPath.row].nombre
-        //celda.lblTipoMascota.text = String(mascotas2[indexPath.row].idTipo)
-        celda.lblTipoMascota.text = buscarTipo(id: mascotas2[indexPath.row].idTipo)
-        //celda.imgFoto.image = UIImage(mascotas[indexPath.row].foto)
-        
-        return celda
-    }
+
+
+
 }
