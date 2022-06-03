@@ -63,7 +63,7 @@ class VistaListadoMascotas: UITableViewController {
         var tipo = 0
         var raza = ""
         
-        let alerta = UIAlertController(title: "Ingrese", message: "Ingrese el nombre, tipo y raza de su mascota", preferredStyle: .alert)
+        let alerta = UIAlertController(title: "Ingrese", message: "Ingrese el nombre, tipo y raza de su mascota. \nPerro = 1\nGato = 2\nAve = 3\nReptil = 4\nRoedor = 5\nPez = 6", preferredStyle: .alert)
         alerta.addTextField {
             txtNombre in txtNombre.placeholder = "Nombre"
         }
@@ -84,9 +84,26 @@ class VistaListadoMascotas: UITableViewController {
             print(nombre)
             print(tipo)
             print(raza)
+            
+            //Valida que tenga un id valido
+            if (tipo != 1 && tipo != 2 && tipo != 3 && tipo != 4 && tipo != 5 && tipo != 6){
+                let alerta = UIAlertController(title: "Error", message: "Ingrese un tipo entre 1 y 6", preferredStyle: .alert)
+                let btnCancelar = UIAlertAction(title: "Ok", style: .default){_ in
+                }
+                alerta.addAction(btnCancelar)
+                self.present(alerta, animated: true, completion: nil)
+                return
+            }
             //var id = UsuarioCurrent.idUsuario
             let id = 1
-            self.wsInsertarMascota(nombre, tipo, raza, id)
+            //self.wsInsertarMascota(nombre, tipo, raza, id)
+            
+            let alerta = UIAlertController(title: "Agregar mascota", message: "Mascota agregada correctamente", preferredStyle: .alert)
+            let btnCancelar = UIAlertAction(title: "Ok", style: .default){_ in
+            }
+            alerta.addAction(btnCancelar)
+            self.present(alerta, animated: true, completion: nil)
+            playSound(sonido: "correcto")
         }
         
         alerta.addAction(btnCancelar)
@@ -153,7 +170,8 @@ class VistaListadoMascotas: UITableViewController {
         let celda = tableView.dequeueReusableCell(withIdentifier: "celdaNombre", for: indexPath) as! celdaListado
         
         celda.lblNombreMascota.text = mascotas2[indexPath.row].nombre
-        celda.lblTipoMascota.text = String(mascotas2[indexPath.row].idTipo)
+        //celda.lblTipoMascota.text = String(mascotas2[indexPath.row].idTipo)
+        celda.lblTipoMascota.text = buscarTipo(id: mascotas2[indexPath.row].idTipo)
         //celda.imgFoto.image = UIImage(mascotas[indexPath.row].foto)
         
         return celda

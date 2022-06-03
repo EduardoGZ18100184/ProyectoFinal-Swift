@@ -90,7 +90,8 @@ class VistaAgendarCita: UIViewController, UIPickerViewDataSource, UIPickerViewDe
         
         //txtNombreMascota.text = mascotas[row].nombre
         gint_id_mascota = mascotas[row].idMascota
-        txtTipoMascota.text = String(mascotas[row].idTipo)
+        //txtTipoMascota.text = String(mascotas[row].idTipo)
+        txtTipoMascota.text = buscarTipo(id: mascotas[row].idTipo)
         txtRazaMascota.text = String(mascotas[row].raza)
         imgImagenMascota.image = UIImage()
     }
