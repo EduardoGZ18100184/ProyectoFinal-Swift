@@ -16,7 +16,7 @@ class VistaAgendarCita: UIViewController, UIPickerViewDataSource, UIPickerViewDe
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        pruebaPkv()
+        //pruebaPkv()
         pkvMascotas.delegate = self
         pkvMascotas.dataSource = self
         
@@ -38,7 +38,7 @@ class VistaAgendarCita: UIViewController, UIPickerViewDataSource, UIPickerViewDe
     
     // Acciones que realiza si se da en el boton agendar
     @IBAction func btnAgendar(_ sender: Any) {
-        ValidarHorario()
+        //ValidarHorario()
         
         let alerta = UIAlertController(title: "Agendar cita", message: "Cita agendada correctamente", preferredStyle: .alert)
         let btnCancelar = UIAlertAction(title: "Ok", style: .default){_ in
@@ -55,6 +55,7 @@ class VistaAgendarCita: UIViewController, UIPickerViewDataSource, UIPickerViewDe
         
     }
     
+    /*
     func ValidarHorario(){
         let horario = dateTF.text
         
@@ -65,7 +66,7 @@ class VistaAgendarCita: UIViewController, UIPickerViewDataSource, UIPickerViewDe
         //var horarioDate = formatDate(cadena: horario!)
         
         print(horario)
-    }
+    }*/
     
     
     /// Funciones para el pickerview de las mascotas del usuario
@@ -80,19 +81,19 @@ class VistaAgendarCita: UIViewController, UIPickerViewDataSource, UIPickerViewDe
         1
     }
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return mascotas.count
+        return mascotas2.count
     }
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return mascotas[row].nombre
+        return mascotas2[row].nombre
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         
         //txtNombreMascota.text = mascotas[row].nombre
-        gint_id_mascota = mascotas[row].idMascota
+        gint_id_mascota = mascotas2[row].idMascota
         //txtTipoMascota.text = String(mascotas[row].idTipo)
-        txtTipoMascota.text = buscarTipo(id: mascotas[row].idTipo)
-        txtRazaMascota.text = String(mascotas[row].raza)
+        txtTipoMascota.text = buscarTipo(id: mascotas2[row].idTipo)
+        txtRazaMascota.text = String(mascotas2[row].raza)
         imgImagenMascota.image = UIImage()
     }
     

@@ -22,9 +22,6 @@ class VistaConfiguracion: UIViewController {
             //mostrar alert de que esta vacio
             let alerta = UIAlertController(title: "Error", message: "Ingrese un correo valido", preferredStyle: .alert)
             let btnCancelar = UIAlertAction(title: "Ok", style: .cancel){_ in
-                print("error")
-                print(UsuarioCurrent.email)
-                print(UsuarioCurrent.password)
             }
             alerta.addAction(btnCancelar)
             self.present(alerta, animated: true, completion: nil)
@@ -35,9 +32,6 @@ class VistaConfiguracion: UIViewController {
             //cambia correo solicitando contrasenia
             let alerta = UIAlertController(title: "Cambio de correo", message: "Correo cambiado correctamente", preferredStyle: .alert)
             let btnCancelar = UIAlertAction(title: "Ok", style: .cancel){_ in
-                print("error")
-                print(UsuarioCurrent.email)
-                print(UsuarioCurrent.password)
             }
             alerta.addAction(btnCancelar)
             self.present(alerta, animated: true, completion: nil)
@@ -45,9 +39,6 @@ class VistaConfiguracion: UIViewController {
             //mostrar alert de que no coinciden
             let alerta = UIAlertController(title: "Error", message: "Los correos no coinciden", preferredStyle: .alert)
             let btnCancelar = UIAlertAction(title: "Ok", style: .cancel){_ in
-                print("error")
-                print(UsuarioCurrent.email)
-                print(UsuarioCurrent.password)
             }
             alerta.addAction(btnCancelar)
             self.present(alerta, animated: true, completion: nil)
@@ -81,9 +72,6 @@ class VistaConfiguracion: UIViewController {
             //cambia contra
             let alerta = UIAlertController(title: "Cambio de contraseña", message: "Contraseña cambiada correctamente", preferredStyle: .alert)
             let btnCancelar = UIAlertAction(title: "Ok", style: .cancel){_ in
-                print("error")
-                print(UsuarioCurrent.email)
-                print(UsuarioCurrent.password)
             }
             alerta.addAction(btnCancelar)
             self.present(alerta, animated: true, completion: nil)
@@ -91,9 +79,6 @@ class VistaConfiguracion: UIViewController {
             //mostrar alert de que no coinciden
             let alerta = UIAlertController(title: "Error", message: "Las contraseñas no coinciden", preferredStyle: .alert)
             let btnCancelar = UIAlertAction(title: "Ok", style: .cancel){_ in
-                print("error")
-                print(UsuarioCurrent.email)
-                print(UsuarioCurrent.password)
             }
             alerta.addAction(btnCancelar)
             self.present(alerta, animated: true, completion: nil)

@@ -23,12 +23,22 @@ class VistaLogin: UIViewController {
     @IBOutlet weak var txtContra: UITextField!
     
     @IBAction func btnIniciarSesion(_ sender: Any) {
-        let usuario = txtUsuario.text
-        let contra = txtContra.text
+        let usuario = txtUsuario.text!
+        let contra = txtContra.text!
         //var blnBandera = false
         
+        if usuario == "" || contra == "" {
+            let alerta = UIAlertController(title: "Error", message: "Ingrese un correo y contrasña valido", preferredStyle: .alert)
+            let btnCancelar = UIAlertAction(title: "Ok", style: .cancel){_ in
+            }
+            alerta.addAction(btnCancelar)
+            self.present(alerta, animated: true, completion: nil)
+            return
+            return
+        }
+        
         DispatchQueue.main.async{
-            self.wsLogin(usuario!)
+            self.wsLogin(usuario)
             if UsuarioCurrent.email == usuario && UsuarioCurrent.password == contra {
                 print("Cargando segunda vista...")
                 gs_usuario = self.txtUsuario.text!

@@ -24,6 +24,7 @@ class VistaListadoMascotas: UITableViewController {
     @IBAction func refrescar(_ sender: UIRefreshControl) {
         cargarMascotas(UsuarioCurrent.idUsuario)
     }
+    
     func cargarMascotas(_ idDueno: Int){
         let liga = "https://vetappios.herokuapp.com/mascota/query?idDueno="+"\(idDueno)"
         //var blnResultado = false
