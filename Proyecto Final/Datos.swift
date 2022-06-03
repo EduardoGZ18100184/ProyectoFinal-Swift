@@ -19,34 +19,49 @@ struct Mascota: Decodable, Encodable
 }
  */
 
-struct Usuario: Decodable, Encodable
+class Usuario: Decodable, Encodable
 {
     var idUsuario: Int
     var nombre: String
     var email: String
-    var password: String 
+    var password: String
+    
+    init() {
+        idUsuario = 0
+        nombre = ""
+        email = ""
+        password=""
+    }
 }
 
 class Mascota: Decodable, Encodable
 {
 
-    var id_mascota: Int
+    var idMascota: Int
     var nombre: String
-    var id_tipo: Int
+    var idTipo: Int
     var raza: String
-    var id_dueno: Int
-    var foto: String
+    var idDueno: Int
     
     init(id: Int, nom: String, tipo: Int, raz: String, idD: Int){
-        id_mascota = id
+        idMascota = id
         nombre = nom
-        id_tipo = tipo
+        idTipo = tipo
         raza = raz
-        id_dueno = idD
-        foto = ""
+        idDueno = idD
     }
 }
 
+struct RequestMascota: Decodable, Encodable
+{
+    var nombre: String
+    var idTipo: Int
+    var raza: String
+    var idDueno: Int
+}
+
 var mascotas = [Mascota]()
+var mascotas2 = [Mascota]()
 var usuarios = [Usuario]()
+var UsuarioCurrent = Usuario()
 

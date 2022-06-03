@@ -9,6 +9,9 @@ import UIKit
 
 class VistaAgendarCita: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
     
+    var gint_id_mascota = 0
+    
+    @IBOutlet weak var txtMotivo: UITextField!
     @IBOutlet weak var btnAgendar: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,7 +22,7 @@ class VistaAgendarCita: UIViewController, UIPickerViewDataSource, UIPickerViewDe
         
         if mascotas.count == 0 {
             let alerta = UIAlertController(title: "Error", message: "No tiene mascotas registradas", preferredStyle: .alert)
-            let btnCancelar = UIAlertAction(title: "Cancelar", style: .cancel){_ in
+            let btnCancelar = UIAlertAction(title: "Ok", style: .cancel){_ in
                 print("error")
             }
             alerta.addAction(btnCancelar)
@@ -36,8 +39,20 @@ class VistaAgendarCita: UIViewController, UIPickerViewDataSource, UIPickerViewDe
     // Acciones que realiza si se da en el boton agendar
     @IBAction func btnAgendar(_ sender: Any) {
         ValidarHorario()
-        //EjecutarSonido()
+        
+        let alerta = UIAlertController(title: "Agendar cita", message: "Cita agendada correctamente", preferredStyle: .alert)
+        let btnCancelar = UIAlertAction(title: "Ok", style: .default){_ in
+        }
+        alerta.addAction(btnCancelar)
+        self.present(alerta, animated: true, completion: nil)
+        
         playSound(sonido: "correcto")
+        
+        //gs_usuario
+        //gint_id_mascota
+        //dateTF.text
+        
+        
     }
     
     func ValidarHorario(){
@@ -74,9 +89,10 @@ class VistaAgendarCita: UIViewController, UIPickerViewDataSource, UIPickerViewDe
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         
         //txtNombreMascota.text = mascotas[row].nombre
-        txtTipoMascota.text = String(mascotas[row].id_tipo)
+        gint_id_mascota = mascotas[row].idMascota
+        txtTipoMascota.text = String(mascotas[row].idTipo)
         txtRazaMascota.text = String(mascotas[row].raza)
-        imgImagenMascota.image = UIImage(mascotas[row].foto)
+        imgImagenMascota.image = UIImage()
     }
     
     /// Funciones para la fecha de la cita
