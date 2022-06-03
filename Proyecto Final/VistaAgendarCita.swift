@@ -62,9 +62,9 @@ class VistaAgendarCita: UIViewController, UIPickerViewDataSource, UIPickerViewDe
         //formateador.dateFormat = "yyyy-MM-dd HH:mm"
         //var horarioDate = formateador.date(from: horario!)
         
-        var horarioDate = formatDate(cadena: horario!)
+        //var horarioDate = formatDate(cadena: horario!)
         
-        print(horarioDate)
+        print(horario)
     }
     
     
@@ -128,7 +128,8 @@ class VistaAgendarCita: UIViewController, UIPickerViewDataSource, UIPickerViewDe
     func formatDate(date: Date) -> String
     {
         let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd HH:mm"
+        //formatter.dateFormat = "yyyy-MM-dd HH:mm"
+        formatter.dateFormat = "dd-MM-yyyy HH:mm"
         return formatter.string(from: date)
     }
     

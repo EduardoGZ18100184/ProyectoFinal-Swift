@@ -126,8 +126,8 @@ class VistaListadoMascotas: UITableViewController {
                 return
             }
             //var id = UsuarioCurrent.idUsuario
-            let id = 1
-            self.wsInsertarMascota(nombre, tipo, raza, id)
+            //let id = 1
+            self.wsInsertarMascota(nombre, tipo, raza, UsuarioCurrent.idUsuario)
             
             let alerta = UIAlertController(title: "Agregar mascota", message: "Mascota agregada correctamente", preferredStyle: .alert)
             let btnCancelar = UIAlertAction(title: "Ok", style: .default){_ in

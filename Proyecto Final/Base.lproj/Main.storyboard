@@ -390,7 +390,7 @@
         <!--Inicio-->
         <scene sceneID="RDq-zk-ys9">
             <objects>
-                <viewController id="s2M-jl-WXH" sceneMemberID="viewController">
+                <viewController id="s2M-jl-WXH" customClass="VistaMenu" customModule="Proyecto_Final" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="iJa-TH-fKz">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -428,10 +428,6 @@
                                 <rect key="frame" x="20" y="590" width="361" height="76"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Farmacia" translatesAutoresizingMaskIntoConstraints="NO" id="LhV-Qn-azt">
-                                <rect key="frame" x="20" y="663" width="361" height="76"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Inicio" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tHQ-Dh-AvC">
                                 <rect key="frame" x="164" y="61" width="73" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -439,11 +435,34 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" maximumZoomScale="10" translatesAutoresizingMaskIntoConstraints="NO" id="aUk-6l-7xI">
+                                <rect key="frame" x="20" y="668" width="361" height="71"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Farmacia" translatesAutoresizingMaskIntoConstraints="NO" id="LhV-Qn-azt">
+                                        <rect key="frame" x="0.0" y="-3" width="361" height="76"/>
+                                    </imageView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="LhV-Qn-azt" firstAttribute="trailing" secondItem="ZXO-AL-mAB" secondAttribute="trailing" id="0Y9-Zo-naB"/>
+                                    <constraint firstItem="LhV-Qn-azt" firstAttribute="width" secondItem="bZl-lG-hsV" secondAttribute="width" id="69m-PX-FYc"/>
+                                    <constraint firstItem="LhV-Qn-azt" firstAttribute="height" secondItem="bZl-lG-hsV" secondAttribute="height" multiplier="1.07042" id="alm-YI-ReS"/>
+                                    <constraint firstItem="LhV-Qn-azt" firstAttribute="leading" secondItem="ZXO-AL-mAB" secondAttribute="leading" id="d96-ff-E2m"/>
+                                    <constraint firstItem="LhV-Qn-azt" firstAttribute="bottom" secondItem="ZXO-AL-mAB" secondAttribute="bottom" id="r6Y-uk-AU3"/>
+                                    <constraint firstItem="ZXO-AL-mAB" firstAttribute="top" secondItem="LhV-Qn-azt" secondAttribute="top" constant="3" id="wnH-wA-fjG"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="ZXO-AL-mAB"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="bZl-lG-hsV"/>
+                            </scrollView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="xFl-ae-uGK"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Inicio" image="house" catalog="system" selectedImage="house" id="9Fm-sO-tHJ"/>
+                    <connections>
+                        <outlet property="imageView" destination="LhV-Qn-azt" id="Shu-3c-0uP"/>
+                        <outlet property="scrollView" destination="aUk-6l-7xI" id="dX4-vL-2Vd"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hSD-o1-og2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
