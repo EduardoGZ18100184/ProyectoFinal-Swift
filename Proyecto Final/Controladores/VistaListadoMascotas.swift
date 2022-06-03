@@ -22,6 +22,7 @@ class VistaListadoMascotas: UITableViewController {
     @IBAction func refrescar(_ sender: UIRefreshControl) {
         cargarMascotas(usuarioCurrent.idUsuario)
     }
+    
     func cargarMascotas(_ idDueno: Int){
         let liga = "https://vetappios.herokuapp.com/mascota/query?idDueno="+"\(idDueno)"
         guard let url = URL(string: liga) else { return }
@@ -108,8 +109,7 @@ class VistaListadoMascotas: UITableViewController {
                 self.present(alerta, animated: true, completion: nil)
                 return
             }
-            let id = usuarioCurrent.idUsuario
-            self.wsInsertarMascota(nombre, tipo, raza, id)
+            self.wsInsertarMascota(nombre, tipo, raza, usuarioCurrent.idUsuario)
             
             let alerta = UIAlertController(title: "Agregar mascota", message: "Mascota agregada correctamente", preferredStyle: .alert)
             let btnCancelar = UIAlertAction(title: "Ok", style: .default){ _ in }

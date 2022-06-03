@@ -24,6 +24,15 @@ class VistaLogin: UIViewController {
         let usuario = txtUsuario.text
         let contra = txtContra.text
         
+        if usuario == "" || contra == "" {
+            let alerta = UIAlertController(title: "Error", message: "Ingrese un correo y contrasña valido", preferredStyle: .alert)
+            let btnCancelar = UIAlertAction(title: "Ok", style: .cancel){_ in
+            }
+            alerta.addAction(btnCancelar)
+            self.present(alerta, animated: true, completion: nil)
+            return
+        }
+        
         DispatchQueue.main.async{
             self.wsLogin(usuario!)
             if usuarioCurrent.email == usuario && usuarioCurrent.password == contra {
@@ -33,7 +42,7 @@ class VistaLogin: UIViewController {
                 playSound(sonido: "login")
                 
                 self.navigationController?.pushViewController(vista!, animated: true)
-            }else{
+            } else {
                 //mostrar alert de error
                 print("Usuario/Contraseña incorrecta")
                 let alerta = UIAlertController(title: "Error", message: "Usuario/Contraseña incorrecto", preferredStyle: .alert)

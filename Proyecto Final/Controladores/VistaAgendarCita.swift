@@ -59,7 +59,6 @@ class VistaAgendarCita: UIViewController, UIPickerViewDataSource, UIPickerViewDe
     
     // Acciones que realiza si se da en el boton agendar
     @IBAction func btnAgendar(_ sender: Any) {
-        
         wsGuardarCita(idDueno: usuarioCurrent.idUsuario, idMascota: idMascota_, fechaCita: dateTF.text!, status: 1, motivo: txtMotivo.text!)
         let alerta = UIAlertController(title: "Agendar cita", message: "Cita agendada correctamente", preferredStyle: .alert)
         let btnCancelar = UIAlertAction(title: "Ok", style: .default){ _ in }

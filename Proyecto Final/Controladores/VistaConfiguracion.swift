@@ -31,7 +31,7 @@ class VistaConfiguracion: UIViewController {
             return
         }
         
-        if (correo1 == correo2){
+    if (correo1 == correo2) {
             wsCambiarEmail(nvoEmail: correo1)
             let alerta = UIAlertController(title: "Cambio de correo", message: "Correo cambiado correctamente", preferredStyle: .alert)
             let btnCancelar = UIAlertAction(title: "Ok", style: .cancel){_ in
