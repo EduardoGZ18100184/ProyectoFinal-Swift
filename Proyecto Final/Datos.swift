@@ -7,20 +7,7 @@
 
 import Foundation
 
-/*
-struct Mascota: Decodable, Encodable
-{
-
-    var id_mascota: Int
-    var nombre: String
-    var id_tipo: Int
-    var raza: String
-    var id_dueno: Int
-}
- */
-
-class Usuario: Decodable, Encodable
-{
+class Usuario: Decodable, Encodable {
     var idUsuario: Int
     var nombre: String
     var email: String
@@ -34,9 +21,7 @@ class Usuario: Decodable, Encodable
     }
 }
 
-class Mascota: Decodable, Encodable
-{
-
+class Mascota: Decodable, Encodable {
     var idMascota: Int
     var nombre: String
     var idTipo: Int
@@ -52,16 +37,9 @@ class Mascota: Decodable, Encodable
     }
 }
 
-struct RequestMascota: Decodable, Encodable
-{
-    var nombre: String
-    var idTipo: Int
-    var raza: String
-    var idDueno: Int
-}
+let tipoMascota = [1: "Perro", 2: "Gato", 3: "Ave", 4: "Reptil", 5: "Roedor", 6: "Pez"]
+
 
 var mascotas = [Mascota]()
-var mascotas2 = [Mascota]()
-var usuarios = [Usuario]()
-var UsuarioCurrent = Usuario()
+var usuarioCurrent = Usuario()
 

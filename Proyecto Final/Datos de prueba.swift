@@ -9,32 +9,6 @@ import Foundation
 import UIKit
 import AVKit //para sonidos
 
-var login = [(user: "admin", pass: "1234"),
-(user: "eduardo", pass: "gomez"),
-(user: "carlos ", pass: "santana")]
-
-//var loginDB = [{"idUsuario":1,"nombre":"Carlos Santana","email":"carlos@gmail.com","password":"123"},{"idUsuario":2,"nombre":"Eduardo Gomez","email":"eduardo@gmail.com","password":"abc"}]
-
-///Datos de prueba para pickerview de citas
-///
-let mascotasPrueba = ["Luna","Masha", "Lulu", "Manchas", "Firulais" ]
-
-func pruebaPkv(){
-    let Luna = Mascota(id: 1,nom: "Luna",tipo: 2,raz: "Siames",idD:1)
-    let Masha = Mascota(id: 2,nom: "Masha",tipo: 5,raz: "Desconocida",idD:1)
-    let Lulu = Mascota(id: 3,nom: "Lulu",tipo: 2,raz: "Amarillo",idD:1)
-    let Manchas = Mascota(id: 4,nom: "Manchas",tipo: 1,raz: "Chihuahua",idD:1)
-    let Firulais = Mascota(id: 5,nom: "Firulais",tipo: 1,raz: "Desconocida",idD:1)
-    /*Luna.foto = "https://www.purina-latam.com/sites/g/files/auxxlc391/files/styles/social_share_large/public/01_%C2%BFQu%C3%A9-puedo-hacer-si-mi-gato-est%C3%A1-triste-.png?itok=w67Nhubc"
-    Manchas.foto = "https://upload.wikimedia.org/wikipedia/commons/b/b8/Degaen.jpg"
-    Masha.foto = "https://static3.lasprovincias.es/www/multimedia/202010/10/media/cortadas/gato-ksgH-U1204237773070s-1248x770@Las%20Provincias.jpg"
-    Lulu.foto = "https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Stray_calico_cat_near_Sagami_River-01.jpg/640px-Stray_calico_cat_near_Sagami_River-01.jpg"
-    Firulais.foto = "https://assets.sams.com.mx/image/upload/f_auto,q_auto:eco,w_auto,c_scale,dpr_auto/mx/images/page-landing-images/recomendados/2021/03/recomendados-mascotas-perros-210323.png"
-    */
-    mascotas = [Luna, Masha, Lulu, Manchas, Firulais]
-}
-
-///Funcion de prueba para cargar imagen desde una URL
 extension UIImageView {
     func cargarImagen(_ url: String) {
         guard let urlImagen = URL(string: url)
@@ -69,6 +43,14 @@ extension UIImage {
     }
 }
 
+extension Date {
+    func toString(format: String) -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = format
+        return formatter.string(from: self)
+    }
+}
+
 var player: AVAudioPlayer?
 func playSound(sonido: String) {
     guard let url = Bundle.main.url(forResource: sonido, withExtension: "wav") else { return }
@@ -88,21 +70,3 @@ func playSound(sonido: String) {
     }
 }
 
-// tupla de id_tipo - descripcion
-var tuplTipos = [
-    (id: 1, tipo: "Perro"),
-    (id: 2, tipo: "Gato"),
-    (id: 3, tipo: "Ave"),
-    (id: 4, tipo: "Reptil"),
-    (id: 5, tipo: "Roedor"),
-    (id: 6, tipo: "Pez")
-]
-
-func buscarTipo(id: Int) -> String{
-    for tipo in tuplTipos{
-        if (id == tipo.id){
-            return tipo.tipo
-        }
-    }
-    return ""
-}

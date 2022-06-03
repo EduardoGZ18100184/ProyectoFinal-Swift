@@ -23,8 +23,8 @@ class VistaConfiguracion: UIViewController {
             let alerta = UIAlertController(title: "Error", message: "Ingrese un correo valido", preferredStyle: .alert)
             let btnCancelar = UIAlertAction(title: "Ok", style: .cancel){_ in
                 print("error")
-                print(UsuarioCurrent.email)
-                print(UsuarioCurrent.password)
+                print(usuarioCurrent.email)
+                print(usuarioCurrent.password)
             }
             alerta.addAction(btnCancelar)
             self.present(alerta, animated: true, completion: nil)
@@ -32,12 +32,12 @@ class VistaConfiguracion: UIViewController {
         }
         
         if (correo1 == correo2){
-            //cambia correo solicitando contrasenia
+            wsCambiarEmail(nvoEmail: correo1)
             let alerta = UIAlertController(title: "Cambio de correo", message: "Correo cambiado correctamente", preferredStyle: .alert)
             let btnCancelar = UIAlertAction(title: "Ok", style: .cancel){_ in
                 print("error")
-                print(UsuarioCurrent.email)
-                print(UsuarioCurrent.password)
+                print(usuarioCurrent.email)
+                print(usuarioCurrent.password)
             }
             alerta.addAction(btnCancelar)
             self.present(alerta, animated: true, completion: nil)
@@ -46,8 +46,8 @@ class VistaConfiguracion: UIViewController {
             let alerta = UIAlertController(title: "Error", message: "Los correos no coinciden", preferredStyle: .alert)
             let btnCancelar = UIAlertAction(title: "Ok", style: .cancel){_ in
                 print("error")
-                print(UsuarioCurrent.email)
-                print(UsuarioCurrent.password)
+                print(usuarioCurrent.email)
+                print(usuarioCurrent.password)
             }
             alerta.addAction(btnCancelar)
             self.present(alerta, animated: true, completion: nil)
@@ -79,11 +79,12 @@ class VistaConfiguracion: UIViewController {
         
         if (contra1 == contra2){
             //cambia contra
+            wsCambiarContrasena(nvaContrasena: contra1)
             let alerta = UIAlertController(title: "Cambio de contraseña", message: "Contraseña cambiada correctamente", preferredStyle: .alert)
             let btnCancelar = UIAlertAction(title: "Ok", style: .cancel){_ in
                 print("error")
-                print(UsuarioCurrent.email)
-                print(UsuarioCurrent.password)
+                print(usuarioCurrent.email)
+                print(usuarioCurrent.password)
             }
             alerta.addAction(btnCancelar)
             self.present(alerta, animated: true, completion: nil)
@@ -92,8 +93,8 @@ class VistaConfiguracion: UIViewController {
             let alerta = UIAlertController(title: "Error", message: "Las contraseñas no coinciden", preferredStyle: .alert)
             let btnCancelar = UIAlertAction(title: "Ok", style: .cancel){_ in
                 print("error")
-                print(UsuarioCurrent.email)
-                print(UsuarioCurrent.password)
+                print(usuarioCurrent.email)
+                print(usuarioCurrent.password)
             }
             alerta.addAction(btnCancelar)
             self.present(alerta, animated: true, completion: nil)
@@ -109,7 +110,53 @@ class VistaConfiguracion: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        //wsCredencialesUsuario()
+    }
+    
+    func wsCambiarContrasena(nvaContrasena: String) {
+        let parametros = [
+            "idUsuario": usuarioCurrent.idUsuario,
+            "nombre": usuarioCurrent.nombre,
+            "email": usuarioCurrent.email,
+            "password": nvaContrasena] as [String : Any]
+        usuarioCurrent.password = nvaContrasena
+        guard let url = URL(string: "https://vetappios.herokuapp.com/usuario/") else { return }
+        var peticion = URLRequest(url: url)
+        peticion.httpMethod = "POST"
+        peticion.setValue("Application/json", forHTTPHeaderField: "Content-Type")
+        peticion.httpBody = try? JSONSerialization.data(withJSONObject: parametros, options: [])
+        
+        let session = URLSession.shared.dataTask(with: peticion){
+            data, response, error in
+            if let error = error {
+                print("El error es: \(error.localizedDescription)")
+            } else {
+                let jsonRes = try? JSONSerialization.jsonObject(with: data!, options: [])
+                print("Respuesta json es \(jsonRes)")
+            }
+        }.resume()
+    }
+    
+    func wsCambiarEmail(nvoEmail: String) {
+        let parametros = [
+            "idUsuario": usuarioCurrent.idUsuario,
+            "nombre": usuarioCurrent.nombre,
+            "email": nvoEmail,
+            "password": usuarioCurrent.password] as [String : Any]
+        usuarioCurrent.email = nvoEmail
+        guard let url = URL(string: "https://vetappios.herokuapp.com/usuario/") else { return }
+        var peticion = URLRequest(url: url)
+        peticion.httpMethod = "POST"
+        peticion.setValue("Application/json", forHTTPHeaderField: "Content-Type")
+        peticion.httpBody = try? JSONSerialization.data(withJSONObject: parametros, options: [])
+        
+        let session = URLSession.shared.dataTask(with: peticion){
+            data, response, error in
+            if let error = error {
+                print("El error es: \(error.localizedDescription)")
+            } else {
+                let jsonRes = try? JSONSerialization.jsonObject(with: data!, options: [])
+                print("Respuesta json es \(jsonRes)")
+            }
+        }.resume()
     }
 }

@@ -9,14 +9,14 @@ import UIKit
 
 class VistaAgendarCita: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
     
-    var gint_id_mascota = 0
-    
     @IBOutlet weak var txtMotivo: UITextField!
     @IBOutlet weak var btnAgendar: UIButton!
+    private var idMascota_ : Int = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        pruebaPkv()
+        cargarMascotas(usuarioCurrent.idUsuario)
         pkvMascotas.delegate = self
         pkvMascotas.dataSource = self
         
@@ -36,42 +36,40 @@ class VistaAgendarCita: UIViewController, UIPickerViewDataSource, UIPickerViewDe
         
     }
     
+    func cargarMascotas(_ idDueno: Int){
+        let liga = "https://vetappios.herokuapp.com/mascota/query?idDueno="+"\(idDueno)"
+        guard let url = URL(string: liga) else { return }
+        
+        var peticion = URLRequest(url: url)
+        peticion.httpMethod = "GET"
+        
+        URLSession.shared.dataTask(with: peticion) {
+            (data, response, error) in
+            DispatchQueue.main.async {
+                guard let datos = data else { return }
+                do {
+                    mascotas = try JSONDecoder().decode([Mascota].self, from: datos)
+                } catch let jsonError {
+                    print(jsonError)
+                }
+                print (mascotas.count)
+            }
+        }.resume()
+    }
+    
     // Acciones que realiza si se da en el boton agendar
     @IBAction func btnAgendar(_ sender: Any) {
-        ValidarHorario()
         
+        wsGuardarCita(idDueno: usuarioCurrent.idUsuario, idMascota: idMascota_, fechaCita: dateTF.text!, status: 1, motivo: txtMotivo.text!)
         let alerta = UIAlertController(title: "Agendar cita", message: "Cita agendada correctamente", preferredStyle: .alert)
-        let btnCancelar = UIAlertAction(title: "Ok", style: .default){_ in
-        }
+        let btnCancelar = UIAlertAction(title: "Ok", style: .default){ _ in }
         alerta.addAction(btnCancelar)
         self.present(alerta, animated: true, completion: nil)
-        
         playSound(sonido: "correcto")
         
-        //gs_usuario
-        //gint_id_mascota
-        //dateTF.text
-        
-        
     }
-    
-    func ValidarHorario(){
-        let horario = dateTF.text
-        
-        //var formateador = DateFormatter()
-        //formateador.dateFormat = "yyyy-MM-dd HH:mm"
-        //var horarioDate = formateador.date(from: horario!)
-        
-        var horarioDate = formatDate(cadena: horario!)
-        
-        print(horarioDate)
-    }
-    
-    
-    /// Funciones para el pickerview de las mascotas del usuario
     
     @IBOutlet weak var pkvMascotas: UIPickerView!
-    @IBOutlet weak var txtNombreMascota: UITextField!
     @IBOutlet weak var txtTipoMascota: UITextField!
     @IBOutlet weak var txtRazaMascota: UITextField!
     @IBOutlet weak var imgImagenMascota: UIImageView!
@@ -87,23 +85,22 @@ class VistaAgendarCita: UIViewController, UIPickerViewDataSource, UIPickerViewDe
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        
-        //txtNombreMascota.text = mascotas[row].nombre
-        gint_id_mascota = mascotas[row].idMascota
-        //txtTipoMascota.text = String(mascotas[row].idTipo)
-        txtTipoMascota.text = buscarTipo(id: mascotas[row].idTipo)
+        self.idMascota_ = mascotas[row].idMascota
+        txtTipoMascota.text = tipoMascota[mascotas[row].idTipo]
         txtRazaMascota.text = String(mascotas[row].raza)
         imgImagenMascota.image = UIImage()
     }
-    
-    /// Funciones para la fecha de la cita
     
     func EstablecerFechas(){
         let datePicker = UIDatePicker()
         datePicker.datePickerMode = .dateAndTime
         datePicker.addTarget(self, action: #selector(dateChange(datePicker:)), for: UIControl.Event.valueChanged)
         datePicker.frame.size = CGSize(width: 0, height: 300)
-        datePicker.preferredDatePickerStyle = .wheels
+        if #available(iOS 13.4, *) {
+            datePicker.preferredDatePickerStyle = .wheels
+        } else {
+            // Fallback on earlier versions
+        }
         let fecha_actual = Calendar.current
         let fecha_minima = fecha_actual.date(byAdding: .day, value: 1, to: Date())
         datePicker.minimumDate = fecha_minima
@@ -114,30 +111,38 @@ class VistaAgendarCita: UIViewController, UIPickerViewDataSource, UIPickerViewDe
         datePicker.maximumDate = date //Muestra hasta un anio mas
                 
         dateTF.inputView = datePicker
-        dateTF.text = formatDate(date: Date())
+        dateTF.text = Date().toString(format: "dd-MM-yyyy HH:mm")
     }
     
     @IBOutlet weak var dateTF: UITextField!
     
-    @objc func dateChange(datePicker: UIDatePicker)
-    {
-        dateTF.text = formatDate(date: datePicker.date)
+    @objc func dateChange(datePicker: UIDatePicker) {
+        dateTF.text = datePicker.date.toString(format: "dd-MM-yyyy HH:mm")
     }
     
-    //convierte de date a string
-    func formatDate(date: Date) -> String
-    {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd HH:mm"
-        return formatter.string(from: date)
-    }
-    
-    //convierte de string a date
-    func formatDate(cadena: String) -> Date
-    {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd HH:mm"
-        return formatter.date(from: cadena)!
+    func wsGuardarCita(idDueno:Int, idMascota:Int, fechaCita: String, status: Int, motivo: String) {
+        let parametros = [
+            "idDueno": idDueno,
+            "idMascota": idMascota,
+            "fechaCita": fechaCita,
+            "status": status,
+            "motivo": motivo] as [String : Any]
+        
+        guard let url = URL(string: "https://vetappios.herokuapp.com/cita/") else { return }
+        var peticion = URLRequest(url: url)
+        peticion.httpMethod = "POST"
+        peticion.setValue("Application/json", forHTTPHeaderField: "Content-Type")
+        peticion.httpBody = try? JSONSerialization.data(withJSONObject: parametros, options: [])
+        
+        let session = URLSession.shared.dataTask(with: peticion){
+            data, response, error in
+            if let error = error {
+                print("El error es: \(error.localizedDescription)")
+            } else {
+                let jsonRes = try? JSONSerialization.jsonObject(with: data!, options: [])
+                print("Respuesta json es \(jsonRes)")
+            }
+        }.resume()
     }
     
 }
